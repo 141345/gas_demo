@@ -6,16 +6,21 @@ contract gasgas {
     uint public g1;
     uint public g2;
     uint public g3;
+    uint public g4;
+    uint public g5;
     uint public gas01;
     uint public gas12;
     uint public gas23;
+    uint public gas34;
+    uint public gas45;
 
-    function gg00() public {
+    function lt_gt() public {
 
         g0 = gasleft();
 
         for (uint i; i < 1000; ) {
-            unchecked { i++; }
+            if (i > 0) {}
+            unchecked { ++i; }
         }
 
         g1 = gasleft();
@@ -24,6 +29,7 @@ contract gasgas {
 
         g1 = gasleft();
         for (uint i; i < 1000; ) {
+            if (i != 0) {}
             unchecked { ++i; }
         }        
 
@@ -31,42 +37,56 @@ contract gasgas {
 
         gas12 = g1 - g2;
 
-        g2 = gasleft();
-        for (uint i; i < 1000; ) {
-            unchecked { i = i + 1; }
-        }    
-
-        g3 = gasleft();
-
-        gas23 = g2 - g3;
-
-
     }
 
-    function pplus() public {
-
-        uint a = 10;
+    function decrease() public {
 
         g0 = gasleft();
 
-        for (uint i; i < 1000; ) {
-            a += 2;
-            unchecked { i++; }
+        for (uint i = 500; i > 0; ) {
+            i--;
         }
 
         g1 = gasleft();
 
         gas01 = g0 - g1;
 
-        a = 10;
         g1 = gasleft();
-        for (uint i; i < 1000; ) {
-            a = a + 2;
-            unchecked { i++; }
+        for (uint i = 500; i > 0; ) {
+            --i;
         }        
 
         g2 = gasleft();
 
         gas12 = g1 - g2;
+
+        g2 = gasleft();
+        for (uint i = 500; i > 0; ) {
+            i = i - 1;
+        }        
+
+        g3 = gasleft();
+
+        gas23 = g2 - g3;
+
+        g3 = gasleft();
+        for (uint i = 500; i > 0; ) {
+            unchecked { i = i - 1; }
+        }        
+
+        g4 = gasleft();
+
+        gas34 = g3 - g4;
+
+        g4 = gasleft();
+        for (uint i = 500; i > 0; ) {
+            unchecked { --i; }
+        }        
+
+        g5 = gasleft();
+
+        gas45 = g4 - g5;
+
     }
+
 }

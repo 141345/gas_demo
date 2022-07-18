@@ -8,7 +8,7 @@ contract callmemo {
     uint public fun_gas1;
 
 
-    function f_calldata(uint[] calldata array) public {
+    function f_calldata(uint[] calldata array) external {
         g0 = gasleft();
         uint a;
         for (uint i; i < array.length; ++i) {
@@ -21,7 +21,7 @@ contract callmemo {
 
     }
 
-    function f_memory(uint[] memory array) public{
+    function f_memory(uint[] memory array) external {
         g0 = gasleft();
 
         uint a;

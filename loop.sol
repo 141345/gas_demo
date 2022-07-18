@@ -13,8 +13,6 @@ contract gasgas {
     uint public gas23;
     uint public gas34;
     uint public gas45;
-    uint public fun_gas0;
-    uint public fun_gas1;
 
     function lt_gt() public {
 
@@ -61,7 +59,7 @@ contract gasgas {
     }
 
 
-    function length_calldata(uint[] calldata array) public {
+    function length(uint[] calldata array) public {
         g0 = gasleft();
 
         for (uint i; i < array.length; i++) {
@@ -81,33 +79,8 @@ contract gasgas {
 
         gas12 = g1 - g2;    
 
-        fun_gas0 = g0 - g2;
-
     }
 
-    function length_memory(uint[] memory array) public{
-        g0 = gasleft();
-
-        for (uint i; i < array.length; i++) {
-        }
-
-        g1 = gasleft();
-
-        gas01 = g0 - g1;
-
-        uint len = array.length;
-
-        g1 = gasleft();
-        for (uint i; i < len; i++) {
-        }
-        
-        g2 = gasleft();
-
-        gas12 = g1 - g2;     
-
-        fun_gas1 = g0 - g2;
-
-    }
 
     function iter() public {
 
